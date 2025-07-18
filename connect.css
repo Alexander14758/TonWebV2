@@ -1,0 +1,184 @@
+/* Best practice: handle box model globally */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  min-height: 100vh; /* Ensure full viewport height */
+  background-image: url("toncity.png");
+  background-size: cover; /* Make it cover the whole page */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: center; /* Keep it centered */
+  background-attachment: fixed; /* Optional: makes it scroll with the content */
+}
+
+.app-container {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.connectbtn {
+  position: absolute;
+  top: 10px;
+  margin: 0;
+  z-index: 10;
+}
+
+/* Button styles */
+.btn {
+  display: block;
+  margin: 90px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+  max-width: 300px;
+}
+
+.btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* Wallet address */
+#wallet-address {
+  font-weight: bold;
+  margin-top: -10px; /* push down below connect */
+  text-align: center;
+}
+
+/* Eligibility checks */
+.check {
+  padding: 5px 10px;
+  margin: 5px 0;
+  font-size: 18px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.check.green {
+  background: #d4f4dd;
+  color: #177245;
+}
+
+.check.red {
+  background: #f9d2d2;
+  color: #a12f2f;
+}
+
+/* Result sections */
+#result,
+#balanceResult {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#toggleTransactions {
+  font-size: medium;
+  cursor: pointer;
+  margin-top: 20px;
+  background-color: rgba(212, 14, 219, 0.301);
+}
+
+/* Transactions */
+
+/* Copy button */
+.copy-btn {
+  font-size: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 3px 6px;
+  border: none;
+  background: #f0b4d791;
+  border-radius: 5px;
+}
+
+.transaction-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.144);
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease;
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+/* Loader */
+.loader {
+  border: 4px solid rgba(0, 204, 255, 0.2);
+  border-top: 4px solid #00ccff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.italianno-regular {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-text {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100px;
+  font-style: normal;
+}
+
+.ranks {
+  background-color: rgba(21, 10, 83, 0.507);
+  color: #00ccff;
+  text-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
+  transition: background-color 0.3s;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100px;
+  font-style: normal;
+  border-radius: 25px;
+}
+
+#balanceResult {
+  color: #040724c0;
+  text-shadow: 0 0 10px rgba(0, 68, 255, 0.7);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
+}
+
+.connectbtn {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  position: relative; /* remove absolute positioning */
+}
+
+.top-right-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 90px;
+  height: auto;
+  z-index: 999;
+  opacity: 1 !important;
+}

