@@ -1,90 +1,256 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>TON Wallet Analyzer</title>
-
-<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-<script src="https://unpkg.com/tonweb@2.0.0-beta.0/dist/index.min.js"></script>
-<link rel="stylesheet" href="connect.css" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<link
-
-  href="https://fonts.googleapis.com/css2?family=Italianno&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap"
-
-  rel="stylesheet"
-
-/>
-
-  <link rel="stylesheet" type="text/css" href="navbar.css">
-
-  <title>connect</title></head><body>
-    <h1 style= "color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); font-family: Arial, sans-serif; margin-bottom: 0; text-align: center;">Airdrop Ends In:</h1>
-  <div id="timer" style= "color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); font-weight: bold; font-size: 1.3em; text-align: center;">Loading...</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TON Wallet Analyzer - Premium Airdrop Platform</title>
     
-  </div>  <!-- CONNECT PAGE -->  <div id="connectPage">
+    <!-- TON Connect Libraries -->
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://unpkg.com/tonweb@2.0.0-beta.0/dist/index.min.js"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="connect.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-animation">
+        <div class="floating-elements">
+            <div class="floating-cube"></div>
+            <div class="floating-sphere"></div>
+            <div class="floating-pyramid"></div>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
 
-  <img src="logo_full.svg" alt="Logo" class="top-right-logo" />
+    <!-- Navigation -->
+    <nav class="premium-nav">
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="logo_full.svg" alt="TON Logo" class="nav-logo">
+                <span class="brand-name">TON Analyzer</span>
+            </div>
+            
+            <!-- Connect Wallet Button - Always Visible -->
+            <div id="ton-connect" class="connect-wallet-nav"></div>
+            
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-<header>
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="premium-sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <h3>Navigation</h3>
+                <button class="close-sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-links">
+                <a href="#home" class="sidebar-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#airdrop" class="sidebar-link">
+                    <i class="fas fa-gift"></i>
+                    <span>Airdrop</span>
+                </a>
+                <a href="#contact" class="sidebar-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+                <a href="https://tonhub.com/getApp" class="sidebar-link">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </a>
+                <a href="https://tonhub.com/legal/privacy" class="sidebar-link">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-  
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="countdown-card">
+                    <div class="countdown-header">
+                        <i class="fas fa-clock"></i>
+                        <h2>Airdrop Countdown</h2>
+                    </div>
+                    <div id="timer" class="countdown-display">Loading...</div>
+                    <div class="countdown-label">Until Airdrop Ends</div>
+                </div>
+                
+                <div class="hero-title">
+                    <h1>Discover Your <span class="gradient-text">TON Potential</span></h1>
+                    <p class="hero-subtitle">Advanced blockchain analytics and exclusive airdrop rewards</p>
+                </div>
+                
+                <div class="wallet-status-card">
+                    <div class="status-header">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet Status</span>
+                    </div>
+                    <p id="wallet-address" class="wallet-status">Not Connected</p>
+                    <div class="connection-indicator">
+                        <div class="indicator-dot"></div>
+                        <span class="indicator-text">Ready to Connect</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <h2 style="color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7); text-align: center; margin-left: 15px;">
+        <!-- Analytics Dashboard -->
+        <section class="analytics-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Wallet Analytics</h2>
+                <p>Comprehensive analysis of your TON blockchain activity</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <!-- Scan Wallet Card -->
+                <div class="analytics-card scan-card">
+                    <div class="card-header">
+                        <i class="fas fa-search"></i>
+                        <h3>Scan Your Wallet</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Analyze your transaction history and wallet activity</p>
+                        <button class="premium-btn primary" onclick="scanWallet()">
+                            <i class="fas fa-scan"></i>
+                            Start Analysis
+                        </button>
+                    </div>
+                </div>
 
-    Discover Your TON Potential
+                <!-- Results Card -->
+                <div class="analytics-card results-card">
+                    <div class="card-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Your Rank</h3>
+                    </div>
+                    <div id="result" class="card-content rank-display">
+                        <div class="rank-placeholder">
+                            <i class="fas fa-user-astronaut"></i>
+                            <p>Connect and scan to see your rank</p>
+                        </div>
+                    </div>
+                </div>
 
-  </h2>
+                <!-- Balance Card -->
+                <div class="analytics-card balance-card">
+                    <div class="card-header">
+                        <i class="fas fa-coins"></i>
+                        <h3>Current Balance</h3>
+                    </div>
+                    <div id="balanceResult" class="card-content balance-display">
+                        <div class="balance-placeholder">
+                            <i class="fas fa-chart-pie"></i>
+                            <p>Balance will appear after scan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Eligibility Section -->
+        <section class="eligibility-section">
+            <div class="section-header">
+                <h2><i class="fas fa-check-circle"></i> Eligibility Check</h2>
+                <p>Verify your qualification for exclusive rewards</p>
+            </div>
+            
+            <div class="eligibility-container">
+                <button class="premium-btn secondary" onclick="showEligibility()" style="display: none" id="checkEligibilityBtn">
+                    <i class="fas fa-clipboard-check"></i>
+                    Check Eligibility
+                </button>
+                
+                <div id="checks" class="eligibility-checks" style="display: none"></div>
+                
+                <div class="claim-section">
+                    <button class="premium-btn claim" id="claimBtn" onclick="claimTon()" style="display: none" disabled>
+                        <i class="fas fa-gift"></i>
+                        Claim Reward
+                    </button>
+                </div>
+            </div>
+        </section>
 
+        <!-- Transaction History -->
+        <section class="transactions-section">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Transaction History</h2>
+                <button id="toggleTransactions" onclick="toggleTransactions()" style="display: none" class="toggle-btn">
+                    <i class="fas fa-eye"></i>
+                    Show Transactions
+                </button>
+            </div>
+            
+            <div id="transactionContainer" class="transaction-container" style="display: none"></div>
+        </section>
+    </main>
 
-  <div id="ton-connect" class="connectbtn"></div>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
 
-</header>
-
-  <button class="open-btn" onclick="toggleSidebar()">☰</button>
-
-  <div id="mySidebar" class="sidebar"><a href="#">Airdrop</a>
-
-<a href="">Contact</a>
-
-<a href="https://tonhub.com/getApp">Download</a>
-
-<a href="https://tonhub.com/legal/privacy">Privacy Policy</a>
-
-  </div><div class="app-container">
-
-  <p id="wallet-address" style="color: #040724c0; text-shadow: 0 0 10px rgba(0, 68, 255, 0.7)">Wallet: Not connected
-
-  </p><button class="btn" onclick="scanWallet()">🔍 Scan Wallet</button>
-
-  <div id="result" class="ranks"></div><button class="btn" onclick="showEligibility()" style="display: none"> 📜 Check Eligibility</button>
-
-  <div id="checks" class="montserrat-text" style="display: none"></div>  <div id="balanceResult" style="font-size: 1.1em;"></div><button class="btn" id="claimBtn" onclick="claimTon()" style="display: none" disabled>💸 Claim Reward</button>
-
-  <span><a id="toggleTransactions" onclick="toggleTransactions()" style="display: none" class="trxlist">
-
-  ⏩ Show Transactions
-
-</a>
-
-  </span></div><script>
-  
-      function toggleSidebar() {
-  
-        const sidebar = document.getElementById("mySidebar");
-  
-        sidebar.classList.toggle("open");
-  
-      }
-  
-    </script><div id="transactionContainer" class="transaction-list" style="display: none;"></div> <script src="connect.js"></script>
+    <!-- Scripts -->
+    <script src="connect.js"></script>
     <script src="timer.js"></script>
-    
-    </body></html> 
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function toggleMobileMenu() {
+            toggleSidebar();
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effects
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.premium-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
