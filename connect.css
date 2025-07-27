@@ -16,13 +16,13 @@
   /* Premium Neutrals */
   --dark-bg: #0B0D17;
   --darker-bg: #060810;
-  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: rgba(15, 19, 35, 0.85);
   --card-dark: rgba(15, 19, 35, 0.95);
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.15);
   --text-primary: #ffffff;
   --text-secondary: #A1A8B8;
-  --text-dark: #2D3748;
+  --text-dark: #ffffff;
   
   /* TON Gradients */
   --ton-gradient: linear-gradient(135deg, var(--ton-blue) 0%, var(--ton-magenta) 50%, var(--ton-purple) 100%);
@@ -286,14 +286,14 @@ body {
 .countdown-card {
   background: var(--card-bg);
   backdrop-filter: blur(30px);
-  border: 2px solid transparent;
+  border: 2px solid rgba(42, 116, 248, 0.3);
   background-clip: padding-box;
   border-radius: 32px;
   padding: 3rem;
   box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.1),
-    0 15px 35px rgba(42, 116, 248, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 15px 35px rgba(42, 116, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: perspective(1000px) rotateX(2deg);
   transition: all 0.4s ease;
   position: relative;
@@ -343,7 +343,7 @@ body {
   font-family: 'Orbitron', monospace;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .countdown-display {
@@ -391,14 +391,15 @@ body {
 }
 
 .wallet-status-card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(30px);
-  border: 1px solid var(--glass-border);
+  border: 2px solid rgba(42, 116, 248, 0.2);
   border-radius: 28px;
   padding: 2.5rem;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 10px 25px rgba(42, 116, 248, 0.1);
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(42, 116, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.4s ease;
 }
 
@@ -505,12 +506,13 @@ body {
 .analytics-card {
   background: var(--card-bg);
   backdrop-filter: blur(30px);
-  border: 2px solid transparent;
+  border: 2px solid rgba(42, 116, 248, 0.2);
   border-radius: 32px;
   padding: 3rem;
   box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.1),
-    0 15px 35px rgba(42, 116, 248, 0.05);
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 15px 35px rgba(42, 116, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.4s ease;
   transform: perspective(1000px) rotateX(1deg);
   position: relative;
@@ -563,11 +565,11 @@ body {
 .card-header h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .card-content {
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .rank-placeholder, .balance-placeholder {
@@ -691,11 +693,14 @@ body {
 .eligibility-checks {
   background: var(--card-bg);
   backdrop-filter: blur(30px);
-  border: 2px solid var(--glass-border);
+  border: 2px solid rgba(42, 116, 248, 0.2);
   border-radius: 28px;
   padding: 3rem;
   margin: 3rem 0;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(42, 116, 248, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .check {
@@ -755,29 +760,35 @@ body {
 .transaction-container {
   background: var(--card-bg);
   backdrop-filter: blur(30px);
-  border: 2px solid var(--glass-border);
+  border: 2px solid rgba(42, 116, 248, 0.2);
   border-radius: 24px;
   padding: 3rem;
   margin-top: 3rem;
   max-height: 500px;
   overflow-y: auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(42, 116, 248, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .transaction-container > div {
-  background: rgba(42, 116, 248, 0.05);
-  border: 1px solid var(--glass-border);
+  background: rgba(42, 116, 248, 0.08);
+  border: 1px solid rgba(42, 116, 248, 0.2);
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
-  color: var(--text-dark);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .transaction-container > div:hover {
-  background: rgba(42, 116, 248, 0.1);
+  background: rgba(42, 116, 248, 0.15);
   border-color: var(--ton-blue);
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(42, 116, 248, 0.2);
 }
 
 .copy-btn {
@@ -843,11 +854,15 @@ body {
 /* Rank Display */
 .ranks {
   background: var(--card-bg);
-  border: 2px solid var(--glass-border);
+  border: 2px solid rgba(42, 116, 248, 0.2);
   border-radius: 24px;
   padding: 3rem;
   text-align: center;
   backdrop-filter: blur(30px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(42, 116, 248, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .ranks h3 {
