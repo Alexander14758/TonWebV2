@@ -185,7 +185,7 @@ async function scanWallet() {
   else if (totalTxs >= 20) rank = "Ton Star 🌟";
 
   resultDiv.innerHTML = `<p style="font-size: 0.85rem; color: #00000; text-align: center; margin-top: 8px;">
-  <em>Showing data from your most recent 100 transactions</em>
+  <em>(Showing data from your most recent 100 transactions)</em>
 </p>
   
   <h3>${rank}</h3>
