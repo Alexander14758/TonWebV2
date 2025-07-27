@@ -239,34 +239,14 @@ function showEligibility() {
   const c3 = totalTxs >= 100;
   const c4 = tonBalance >= 2;
 
-  checksDiv.innerHTML = `<div style="background: rgba(21, 10, 83, 0.507); border-left: 4px solid #00ccff; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.85rem; color: #00ccff;">
-  ⚠️ Only your <strong>latest 100 transactions</strong> are analyzed for ranking and eligibility.<br>
-  💡 <strong>Note:</strong> Transactions are optional — but having at least <strong>2 TON</strong> in your wallet is required to claim rewards.
+  checksDiv.innerHTML = `<div style="background: rgba(21, 10, 83, 0.507); border-left: 4px solid #00ccff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; color: #00ccff; line-height: 1.4;">
+  ⚠️ Only your <strong>latest 100 transactions</strong> are analyzed.<br>
+  💡 <strong>Note:</strong> Transactions are optional — <strong>2 TON balance</strong> is required to claim.
 </div>
-    ${mark(
-      c1,
-      `5+ transactions 🧍  <em style="font-size: small; color: brown; margin-left: 5px">
-        not mandatory
-      </em>`
-    )}
-    ${mark(
-      c2,
-      `50+ transactions 🛡️   <em style="font-size: small; color: brown; margin-left: 5px">
-        not mandatory
-      </em>`
-    )}
-    ${mark(
-      c3,
-      `100+ transactions 👑  <em style="font-size: small; color: brown; margin-left: 5px">
-        not mandatory
-      </em>`
-    )}
-    ${mark(
-      c4,
-      `2 TON Balance 💰    <em style="font-size: medium; color: brown; margin-left: 5px">
-        MANDATORY
-      </em> `
-    )}
+    ${mark(c1, `5+ Transactions 🧍 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
+    ${mark(c2, `50+ Transactions 🛡️ <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
+    ${mark(c3, `100+ Transactions 👑 <span style="font-size: 0.8rem; color: #888; margin-left: 8px;">(Optional)</span>`)}
+    ${mark(c4, `2+ TON Balance 💰 <span style="font-size: 0.85rem; color: #ff6b35; margin-left: 8px; font-weight: 600;">(REQUIRED)</span>`)}
   `;
   checksDiv.style.display = "block";
 
